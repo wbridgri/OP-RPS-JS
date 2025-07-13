@@ -66,7 +66,7 @@ for (let i = 0; i < 5; i++) {
     const result = playRound(humanSelection, computerSelection);
     console.log(result);
 }
-return (humanScore >= computerScore ? console.log(`You win! ${humanScore}`) : console.log(`You lose ${computerScore}`))
+return (humanScore >= computerScore ? console.log(`You win! ${humanScore}`) : console.log(`You lose ${computerScore}`)) //Ya I know about edge cases
 };
 
 playGame();
