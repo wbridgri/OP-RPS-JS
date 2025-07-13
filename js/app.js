@@ -1,7 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
-
 
 
 
@@ -23,60 +19,63 @@ function getHumanChoice() {
     return prompt("Enter rock, paper, or scissors").toLowerCase();
 }
 
-function playRound (humanChoice, computerChoice) {
+function playGame () {
+    
+    let humanScore = 0;
+    let computerScore = 0;
     let message = ''
-    if(humanChoice !== computerChoice) {
-        if(humanChoice == 'rock') {
-            if(computerChoice == 'paper') {
-                computerScore++
-                message = `${computerChoice} beats ${humanChoice}. You: ${humanScore} CPU: ${computerScore}`
-                return message
+    function playRound (humanChoice, computerChoice) {
+        if(humanChoice !== computerChoice) {
+            if(humanChoice == 'rock') {
+                if(computerChoice == 'paper') {
+                    computerScore++
+                    message = `You Lose! ${computerChoice} beats ${humanChoice}. You: ${humanScore} CPU: ${computerScore}`
+
+                }else {
+                    humanScore++
+                    message = `You Win! ${humanChoice} beats ${computerChoice}. You: ${humanScore} CPU: ${computerScore}`
+                }
+            } else if(humanChoice == 'paper') {
+                if(computerChoice == 'rock') {
+                    humanScore++
+                    message = `You Win! ${humanChoice} beats ${computerChoice}. You: ${humanScore} CPU: ${computerScore}`
+                }else {
+                    computerScore++
+                    message = `You Lose! ${computerChoice} beats ${humanChoice}. You: ${humanScore} CPU: ${computerScore}`
+
+                }
             }else {
-                humanScore++
-                message = `${humanChoice} beats ${computerChoice}. You: ${humanScore} CPU: ${computerScore}`
-                return message
+                if(computerChoice == 'rock') {
+                    computerScore++
+                    message = `You Lose! ${computerChoice} beats ${humanChoice}. You: ${humanScore} CPU: ${computerScore}`
+
+                } else {
+                    humanScore++
+                    message = `You Win! ${humanChoice} beats ${computerChoice}. You: ${humanScore} CPU: ${computerScore}`
+
+                }
             }
-        } else if(humanChoice == 'paper') {
-            if(computerChoice == 'rock') {
-                humanScore++
-                message = `${humanChoice} beats ${computerChoice}. You: ${humanScore} CPU: ${computerScore}`
-                return message
-            }else {
-                computerScore++
-                message = `${computerChoice} beats ${humanChoice}. You: ${humanScore} CPU: ${computerScore}`
-                return message
-            }
-        }else {
-            if(computerChoice == 'rock') {
-                computerScore++
-                message = `${computerChoice} beats ${humanChoice}. You: ${humanScore} CPU: ${computerScore}`
-                return message
-            } else {
-                humanScore++
-                message = `${humanChoice} beats ${computerChoice}. You: ${humanScore} CPU: ${computerScore}`
-                return message
-            }
+            return message
+        } else {
+            return 'Tie'
         }
-
-    } else {
-        return 'Tie'
-    }
-
-
+    };
+for (let i = 0; i <= 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    const result = playRound(humanSelection, computerSelection);
+    console.log(result);
+}
 };
 
-
-
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+playGame();
 
 
 
 
 
-const round = playRound( humanSelection, computerSelection);
-console.log(round)
+
+
 
 
 
